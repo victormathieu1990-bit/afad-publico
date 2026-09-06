@@ -4,57 +4,47 @@ import { useState } from "react";
 
 const animals = [
   {
-    name: "Aventurero",
-    species: "Perro",
-    sex: "Macho",
-    age: "2 años",
-    emoji: "🐶",
-  },
-  {
     name: "Rosie",
     species: "Gata",
     sex: "Hembra",
     age: "2 meses",
-    emoji: "🐱",
+    photo: "/rosie.jpg",
   },
   {
-    name: "Manchas",
+    name: "Aventurero",
     species: "Perro",
     sex: "Macho",
-    age: "4 años",
-    emoji: "🐶",
+    age: "2 años",
+    photo: "/aventurero.jpg",
   },
   {
     name: "Wini",
     species: "Perra",
     sex: "Hembra",
     age: "10 años",
-    emoji: "🐶",
+    photo: "/wini.jpg",
+  },
+  {
+    name: "Tope",
+    species: "Perro",
+    sex: "Macho",
+    age: "Adulto",
+    photo: "/tope.jpg",
   },
 ];
 
 export default function Adopciones() {
   const [selectedAnimal, setSelectedAnimal] = useState(null);
-  const [sent, setSent] = useState(false);
-
-  const [form, setForm] = useState({
-    nombre: "",
-    telefono: "",
-  });
-
-  function openForm(animal) {
-    setSelectedAnimal(animal);
-    setSent(false);
-    setForm({ nombre: "", telefono: "" });
-  }
-
-  function closeForm() {
-    setSelectedAnimal(null);
-  }
+  const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setSent(true);
+    setSubmitted(true);
+  }
+
+  function closeModal() {
+    setSelectedAnimal(null);
+    setSubmitted(false);
   }
 
   return (
@@ -75,9 +65,13 @@ export default function Adopciones() {
       </header>
 
       <section className="adoptionIntro">
-        <div className="introPaw">🐾</div>
+        <div className="sectionPaws">🐾</div>
+
         <h1>ADOPCIONES</h1>
-        <p>Encuentra a tu nuevo compañero</p>
+
+        <p>
+          Encuentra a tu nuevo compañero
+        </p>
       </section>
 
       <section className="animalGrid">
@@ -86,30 +80,32 @@ export default function Adopciones() {
           <article className="animalCard" key={animal.name}>
 
             <div className="animalPhoto">
-              <div className="animalEmoji">
-                {animal.emoji}
-              </div>
+              <img
+                src={animal.photo}
+                alt={animal.name}
+              />
             </div>
 
             <div className="animalInfo">
 
-              <div>
-                <h2>{animal.name}</h2>
+              <h2>{animal.name}</h2>
 
-                <p className="animalDetails">
-                  {animal.species} · {animal.sex}
-                </p>
+              <p>
+                {animal.species} · {animal.sex}
+              </p>
 
-                <p className="animalAge">
-                  {animal.age}
-                </p>
-              </div>
+              <strong>
+                {animal.age}
+              </strong>
 
               <button
                 className="viewAnimal"
-                onClick={() => openForm(animal)}
+                onClick={() => {
+                  setSelectedAnimal(animal);
+                  setSubmitted(false);
+                }}
               >
-                CONOCERLO <span>→</span>
+                CONOCERLO →
               </button>
 
             </div>
@@ -123,71 +119,63 @@ export default function Adopciones() {
         Todos nuestros animales merecen una familia. 🐾
       </p>
 
+
       {selectedAnimal && (
 
-        <div className="modalOverlay" onClick={closeForm}>
+        <div className="modalOverlay">
 
-          <div
-            className="adoptionModal"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="interestModal">
 
-            {!sent ? (
+            {!submitted ? (
 
               <>
                 <button
-                  className="closeModal"
-                  onClick={closeForm}
-                  aria-label="Cerrar"
+                  className="modalClose"
+                  onClick={closeModal}
                 >
                   ×
                 </button>
 
-                <div className="modalPaw">🐾</div>
+                <div className="modalPaws">
+                  🐾
+                </div>
 
                 <h2>
                   Quiero conocer a {selectedAnimal.name}
                 </h2>
 
-                <p className="modalText">
-                  Déjanos tus datos y AFAD se pondrá en contacto contigo.
+                <p>
+                  Déjanos tus datos y AFAD se pondrá
+                  en contacto contigo.
                 </p>
 
                 <form onSubmit={handleSubmit}>
 
                   <label>
                     Tu nombre
-                    <input
-                      type="text"
-                      required
-                      value={form.nombre}
-                      onChange={(e) =>
-                        setForm({
-                          ...form,
-                          nombre: e.target.value,
-                        })
-                      }
-                      placeholder="Escribe tu nombre"
-                    />
                   </label>
+
+                  <input
+                    type="text"
+                    placeholder="Escribe tu nombre"
+                    required
+                  />
 
                   <label>
                     Tu teléfono
-                    <input
-                      type="tel"
-                      required
-                      value={form.telefono}
-                      onChange={(e) =>
-                        setForm({
-                          ...form,
-                          telefono: e.target.value,
-                        })
-                      }
-                      placeholder="10 dígitos"
-                    />
                   </label>
 
-                  <button className="submitBtn" type="submit">
+                  <input
+                    type="tel"
+                    placeholder="10 dígitos"
+                    maxLength="10"
+                    required
+                  />
+
+                  <button
+                    type="submit"
+                    className="submitBtn"
+                  >
                     QUIERO CONOCERLO ❤️
                   </button>
 
@@ -202,11 +190,13 @@ export default function Adopciones() {
                   ✓
                 </div>
 
-                <h2>¡Listo!</h2>
+                <h2>
+                  ¡Listo!
+                </h2>
 
                 <p>
-                  AFAD recibió tus datos para conocer a{" "}
-                  <strong>{selectedAnimal.name}</strong>.
+                  AFAD recibió tus datos para conocer a
+                  <strong> {selectedAnimal.name}</strong>.
                 </p>
 
                 <p>
@@ -215,7 +205,7 @@ export default function Adopciones() {
 
                 <button
                   className="submitBtn"
-                  onClick={closeForm}
+                  onClick={closeModal}
                 >
                   VOLVER A ADOPCIONES
                 </button>
