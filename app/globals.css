@@ -515,3 +515,66 @@ body{min-height:100vh}button{font:inherit}
 .adoptionModal textarea:focus {
   border-color: #6a994e;
 }
+
+.animalPhoto {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #e8ecd8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animalPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.animalInfo {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.animalInfo h2 {
+  margin: 0 0 6px;
+}
+
+.animalInfo p {
+  margin: 0 0 8px;
+}
+
+.animalInfo strong {
+  color: #39704a;
+  margin-bottom: 18px;
+}
+
+.viewAnimal {
+  border: none;
+  background: #39704a;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.viewAnimal:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+  .animalGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .animalPhoto {
+    min-height: 220px;
+  }
+}
