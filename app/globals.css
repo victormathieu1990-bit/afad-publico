@@ -668,3 +668,176 @@ body{min-height:100vh}button{font:inherit}
     height: 220px;
   }
 }
+/* =========================
+   MODAL DE ADOPCIONES
+   ========================= */
+
+.adoptionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(30, 45, 35, 0.45);
+  backdrop-filter: blur(5px);
+}
+
+.adoptionModal {
+  position: relative;
+  width: min(500px, 100%);
+  padding: 38px 40px 40px;
+  background: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  animation: modalAppear 0.2s ease-out;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #f5f1e8;
+  color: #333;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  background: #eee8dc;
+}
+
+.modalPaws {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.adoptionModal h2 {
+  margin: 0 0 10px;
+  color: #28613d;
+  font-size: 28px;
+}
+
+.modalText {
+  margin: 0 0 25px;
+  color: #687276;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.adoptionModal .interestForm {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  text-align: left;
+}
+
+.adoptionModal .interestForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #222;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.adoptionModal .interestForm input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 16px;
+  border: 1px solid #d9dedb;
+  border-radius: 13px;
+  background: #fff;
+  color: #222;
+  font-size: 16px;
+  outline: none;
+}
+
+.adoptionModal .interestForm input:focus {
+  border-color: #39764b;
+  box-shadow: 0 0 0 3px rgba(57, 118, 75, 0.12);
+}
+
+.adoptionModal .submitBtn {
+  width: 100%;
+  margin-top: 5px;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 13px;
+  background: #347047;
+  color: white;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.adoptionModal .submitBtn:hover {
+  background: #285c39;
+}
+
+.success {
+  text-align: center;
+}
+
+.successIcon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #dceedd;
+  color: #347047;
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.success h2 {
+  margin-bottom: 15px;
+}
+
+.success p {
+  color: #687276;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.success .submitBtn {
+  margin-top: 22px;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .adoptionOverlay {
+    padding: 15px;
+  }
+
+  .adoptionModal {
+    padding: 35px 22px 25px;
+    border-radius: 24px;
+  }
+
+  .adoptionModal h2 {
+    font-size: 23px;
+  }
+}
