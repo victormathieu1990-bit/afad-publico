@@ -29,3 +29,324 @@ body{min-height:100vh}button{font:inherit}
 .registerBtn{border:0;border-radius:20px;padding:22px 28px;background:#62a9b8;color:#fff;font-size:clamp(19px,2vw,28px);font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.12)}.registerBtn span{margin-left:20px;font-size:30px}
 .donationOptions{max-width:800px;margin:35px auto;display:grid;gap:16px}.donationItem{border:0;border-radius:20px;padding:24px 28px;background:#fff;color:#222;display:flex;justify-content:space-between;align-items:center;font-size:clamp(18px,2vw,25px);text-align:left;box-shadow:0 5px 16px rgba(0,0,0,.07)}.donationItem span{opacity:.6}.donationItem.species{cursor:pointer}.donationItem.species span{opacity:1;font-size:30px}
 @media(max-width:750px){.screen{padding:14px;gap:12px}.header{min-height:105px}.logo{width:125px}.tagline{font-size:15px}.grid{gap:12px}.card{min-height:210px;padding:18px;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;border-radius:24px}.cardIcon{width:56px;height:56px;font-size:40px}.card h2{font-size:21px}.card p{font-size:14px}.arrow{right:12px;bottom:12px;width:40px;height:40px;font-size:30px;border-width:2px}.paw{opacity:.10}.animals{grid-template-columns:1fr}.detailCard{grid-template-columns:1fr}.detailPhoto{min-height:300px;font-size:130px}}
+/* =========================
+   ADOPCIONES
+========================= */
+
+.adoptionPage {
+  min-height: 100vh;
+  background: #f8f4ec;
+  padding-bottom: 40px;
+}
+
+.adoptionHeader {
+  height: 90px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adoptionHeader img {
+  width: 105px;
+  height: auto;
+}
+
+.backButton {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #386641;
+  font-size: 38px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(0,0,0,.08);
+}
+
+.headerSpacer {
+  width: 46px;
+}
+
+.adoptionIntro {
+  text-align: center;
+  padding: 20px 20px 35px;
+}
+
+.introPaw {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.adoptionIntro h1 {
+  margin: 0;
+  color: #386641;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+.adoptionIntro p {
+  margin: 8px 0 0;
+  color: #777;
+  font-size: 17px;
+}
+
+.animalGrid {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.animalCard {
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background: white;
+  display: flex;
+  min-height: 220px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(60, 70, 50, .10);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.animalCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px rgba(60, 70, 50, .15);
+}
+
+.animalPhoto {
+  width: 45%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #dcebd8, #f2e7c9);
+}
+
+.animalEmoji {
+  font-size: 95px;
+}
+
+.animalInfo {
+  flex: 1;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.animalInfo h2 {
+  margin: 0 0 8px;
+  color: #333;
+  font-size: 27px;
+}
+
+.animalDetails {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+.animalAge {
+  margin: 7px 0 0;
+  color: #386641;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.viewAnimal {
+  margin-top: 20px;
+  width: fit-content;
+  border: none;
+  border-radius: 30px;
+  padding: 11px 18px;
+  background: #386641;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .5px;
+  cursor: pointer;
+}
+
+.viewAnimal span {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.adoptionFooter {
+  text-align: center;
+  margin: 38px 20px 0;
+  color: #777;
+  font-size: 15px;
+}
+
+/* MODAL */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 45, 35, .55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.adoptionModal {
+  width: min(480px, 100%);
+  background: white;
+  border-radius: 28px;
+  padding: 35px;
+  position: relative;
+  box-shadow: 0 25px 70px rgba(0,0,0,.25);
+}
+
+.closeModal {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  color: #777;
+  cursor: pointer;
+}
+
+.modalPaw {
+  font-size: 35px;
+  text-align: center;
+}
+
+.adoptionModal h2 {
+  text-align: center;
+  color: #386641;
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.modalText {
+  text-align: center;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.adoptionModal form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.adoptionModal label {
+  color: #444;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.adoptionModal input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 7px;
+  padding: 14px 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+.adoptionModal input:focus {
+  border-color: #6a994e;
+}
+
+.adoptionModal .submitBtn {
+  width: 100%;
+  margin-top: 5px;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  background: #386641;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.success {
+  text-align: center;
+}
+
+.successIcon {
+  width: 65px;
+  height: 65px;
+  margin: 5px auto 15px;
+  border-radius: 50%;
+  background: #dcebd8;
+  color: #386641;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.success h2 {
+  font-size: 30px;
+}
+
+.success p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .adoptionHeader {
+    height: 75px;
+    padding: 10px 18px;
+  }
+
+  .adoptionHeader img {
+    width: 85px;
+  }
+
+  .adoptionIntro h1 {
+    font-size: 29px;
+  }
+
+  .animalGrid {
+    grid-template-columns: 1fr;
+    width: 92%;
+  }
+
+  .animalCard {
+    min-height: 190px;
+  }
+
+  .animalPhoto {
+    min-height: 190px;
+  }
+
+  .animalEmoji {
+    font-size: 75px;
+  }
+
+  .animalInfo {
+    padding: 20px 16px;
+  }
+
+  .animalInfo h2 {
+    font-size: 23px;
+  }
+
+  .adoptionModal {
+    padding: 30px 22px;
+  }
+}
