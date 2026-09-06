@@ -499,3 +499,19 @@ body{min-height:100vh}button{font:inherit}
     width: 92%;
   }
 }
+.adoptionModal textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 7px;
+  padding: 14px 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+}
+
+.adoptionModal textarea:focus {
+  border-color: #6a994e;
+}
